@@ -1,0 +1,36 @@
+{
+  "name": "fitdad",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "description": "Open-source fitness and nutrition tracker built for sustainable fat loss. 16:8 intermittent fasting, structured meal plans, progressive workout programming, and habit tracking in a mobile-first PWA.",
+  "keywords": [
+    "fitness",
+    "nutrition",
+    "intermittent-fasting",
+    "weight-loss",
+    "pwa",
+    "react",
+    "open-source",
+    "health"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.400.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.7.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "vite": "^5.3.4",
+    "vite-plugin-pwa": "^0.20.0"
+  }
+}
