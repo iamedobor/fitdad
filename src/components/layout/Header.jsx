@@ -22,7 +22,7 @@ export function Header({ onSettingsOpen }) {
     >
       <div>
         <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: -0.5 }}>FitDad</span>
-        <span style={{ fontSize: 9, color: 'var(--text3)', marginLeft: 8 }}>16:8 · Upper/Lower · Low Carb</span>
+        <span style={{ fontSize: 9, color: 'var(--text3)', marginLeft: 8 }}>Fitness and nutrition tracker</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {streak > 0 && (
