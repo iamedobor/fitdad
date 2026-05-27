@@ -1,5 +1,7 @@
 # FitDad
 
+**Live demo: [iamedobor.github.io/fitdad](https://iamedobor.github.io/fitdad/)**
+
 **An open-source fitness and nutrition system built for people who are serious about losing weight for good.**
 
 I built this because I struggled with my own weight for years. I tried the apps. I tried the meal plans. Most of them are either too complicated, too generic, or locked behind a subscription. I wanted something that actually worked for my life: structured, science-backed, no noise. So I built it myself, and now I am sharing it.
