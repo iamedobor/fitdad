@@ -53,16 +53,16 @@ export function ProgressView() {
         <div style={{ display: 'grid', gridTemplateColumns: bmi && tdee ? '1fr 1fr' : '1fr', gap: 10 }}>
           {bmi && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>BMI</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>BMI</div>
               <div style={{ fontSize: 26, fontWeight: 700, color: bmi.color }}>{bmi.value}</div>
               <div style={{ fontSize: 11, color: bmi.color, marginTop: 3, fontWeight: 500 }}>{bmi.category}</div>
             </Card>
           )}
           {tdee && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>TDEE</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>TDEE</div>
               <div style={{ fontSize: 26, fontWeight: 700 }}>{tdee.toLocaleString()}</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 3 }}>kcal/day to maintain</div>
+              <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 3 }}>kcal/day to maintain</div>
             </Card>
           )}
         </div>
@@ -86,14 +86,14 @@ export function ProgressView() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
             <div style={{ background: 'var(--bg3)', borderRadius: 'var(--r2)', padding: '10px', textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--accent)' }}>{dailyTarget?.toLocaleString()}</div>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 2 }}>kcal target/day</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginTop: 2 }}>kcal target/day</div>
             </div>
             <div style={{ background: 'var(--bg3)', borderRadius: 'var(--r2)', padding: '10px', textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--green)' }}>{weeksToGoal ?? '—'}</div>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 2 }}>weeks to goal</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginTop: 2 }}>weeks to goal</div>
             </div>
           </div>
-          <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 10, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 10, lineHeight: 1.5 }}>
             {PACE_OPTIONS.find((p) => p.id === pace)?.sub} deficit. Based on your profile and Mifflin-St Jeor formula.
           </div>
         </Card>
@@ -110,7 +110,7 @@ export function ProgressView() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
           {latest?.weight && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>WEIGHT</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>WEIGHT</div>
               <div style={{ fontSize: 26, fontWeight: 700 }}>{latest.weight}<span style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 400 }}> kg</span></div>
               {weightDelta !== null && (
                 <div style={{ fontSize: 12, color: weightDelta < 0 ? 'var(--green)' : 'var(--red)', marginTop: 3, fontWeight: 500 }}>
@@ -126,7 +126,7 @@ export function ProgressView() {
           )}
           {latest?.waist && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>WAIST</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>WAIST</div>
               <div style={{ fontSize: 26, fontWeight: 700 }}>{latest.waist}<span style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 400 }}> cm</span></div>
               {waistDelta !== null && (
                 <div style={{ fontSize: 12, color: waistDelta < 0 ? 'var(--green)' : 'var(--red)', marginTop: 3, fontWeight: 500 }}>
@@ -154,7 +154,7 @@ export function ProgressView() {
         const areaD = pathD + ` L${W},${H} L0,${H} Z`;
         return (
           <Card>
-            <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 10, fontWeight: 500 }}>WEIGHT TREND</div>
+            <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 10, fontWeight: 500 }}>WEIGHT TREND</div>
             <svg width="100%" viewBox={`0 0 ${W} ${H + 4}`} style={{ overflow: 'visible' }}>
               <defs>
                 <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
@@ -179,11 +179,11 @@ export function ProgressView() {
         <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>Log this week</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 8 }}>
           <div>
-            <label style={{ fontSize: 10, color: 'var(--text3)', display: 'block', marginBottom: 4 }}>Weight (kg)</label>
+            <label style={{ fontSize: 10, color: 'var(--text2)', display: 'block', marginBottom: 4 }}>Weight (kg)</label>
             <input type="number" step="0.1" value={w} onChange={(e) => setW(e.target.value)} placeholder="e.g. 88.5" />
           </div>
           <div>
-            <label style={{ fontSize: 10, color: 'var(--text3)', display: 'block', marginBottom: 4 }}>Waist (cm)</label>
+            <label style={{ fontSize: 10, color: 'var(--text2)', display: 'block', marginBottom: 4 }}>Waist (cm)</label>
             <input type="number" step="0.5" value={c} onChange={(e) => setC(e.target.value)} placeholder="e.g. 96" />
           </div>
         </div>
@@ -196,7 +196,7 @@ export function ProgressView() {
       {/* History */}
       {progress.length > 0 && (
         <div>
-          <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 8, fontWeight: 500, letterSpacing: 0.5 }}>HISTORY</div>
+          <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 8, fontWeight: 500, letterSpacing: 0.5 }}>HISTORY</div>
           {[...progress].reverse().map((e, i) => (
             <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 0', borderTop: '1px solid var(--border)' }}>
               <div>

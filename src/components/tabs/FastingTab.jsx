@@ -71,11 +71,11 @@ export function FastingTab() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
         <Card style={{ textAlign: 'center', padding: '12px' }}>
-          <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>WINDOW OPENS</div>
+          <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>WINDOW OPENS</div>
           <div style={{ fontSize: 20, fontWeight: 600, color: 'var(--green)' }}>{f.windowStart}:00</div>
         </Card>
         <Card style={{ textAlign: 'center', padding: '12px' }}>
-          <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4, fontWeight: 500 }}>WINDOW CLOSES</div>
+          <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>WINDOW CLOSES</div>
           <div style={{ fontSize: 20, fontWeight: 600, color: 'var(--red)' }}>{f.windowEnd}:00</div>
         </Card>
       </div>
@@ -90,7 +90,7 @@ export function FastingTab() {
       </Card>
 
       <Card>
-        <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>Why 16:8 works for fat loss</div>
+        <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>Why intermittent fasting works for fat loss</div>
         {SCIENCE.map((x, i) => (
           <div key={i} style={{ padding: '9px 0', borderTop: i > 0 ? '1px solid var(--border)' : 'none' }}>
             <div style={{ fontSize: 12, fontWeight: 500, marginBottom: 3 }}>{x.title}</div>

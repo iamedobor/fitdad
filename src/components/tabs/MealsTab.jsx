@@ -74,13 +74,13 @@ export function MealsTab({ onEditMeal }) {
                 <Card key={item.l}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 9 }}>
                     <div style={{ flex: 1, minWidth: 0, paddingRight: 10 }}>
-                      <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 3 }}>{item.l} - {item.t}</div>
+                      <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 3 }}>{item.l} - {item.t}</div>
                       <div style={{ fontSize: 13, fontWeight: 500, lineHeight: 1.4 }}>{item.m.name}</div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                       <div style={{ textAlign: 'right' }}>
                         <div style={{ fontSize: 19, fontWeight: 600 }}>{item.m.kcal}</div>
-                        <div style={{ fontSize: 9, color: 'var(--text3)' }}>kcal</div>
+                        <div style={{ fontSize: 9, color: 'var(--text2)' }}>kcal</div>
                       </div>
                       {onEditMeal && (
                         <button
@@ -88,7 +88,7 @@ export function MealsTab({ onEditMeal }) {
                           aria-label={`Edit ${item.l}`}
                           style={{ padding: 6, borderRadius: 6, background: 'var(--bg3)', border: '1px solid var(--border2)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                         >
-                          <Pencil size={11} color="var(--text3)" />
+                          <Pencil size={11} color="var(--text2)" />
                         </button>
                       )}
                     </div>
@@ -136,7 +136,7 @@ export function MealsTab({ onEditMeal }) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 500 }}>Weekly shopping list</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{totalChecked}/{totalItems} items ticked</div>
+              <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 2 }}>{totalChecked}/{totalItems} items ticked</div>
             </div>
             {totalChecked > 0 && (
               <button
@@ -168,7 +168,7 @@ export function MealsTab({ onEditMeal }) {
                     </div>
                     <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: 13, textDecoration: done ? 'line-through' : 'none' }}>{item.item}</span>
-                      <span style={{ fontSize: 11, color: 'var(--text3)', marginLeft: 8, flexShrink: 0 }}>{item.qty}</span>
+                      <span style={{ fontSize: 11, color: 'var(--text2)', marginLeft: 8, flexShrink: 0 }}>{item.qty}</span>
                     </div>
                   </div>
                 );

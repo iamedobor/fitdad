@@ -121,7 +121,7 @@ export function HomeTab({ setTab }) {
 
       {meals && (
         <Card>
-          <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 8, fontWeight: 500 }}>TODAY&apos;S MEALS</div>
+          <div style={{ fontSize: 11, color: 'var(--text2)', marginBottom: 8, fontWeight: 500 }}>TODAY&apos;S MEALS</div>
           {[
             { t: `${f.windowStart}:00`, l: 'Meal 1', d: meals.meal1, f: 'meal1' },
             { t: '3:30pm', l: 'Snack', d: meals.snack, f: 'snack' },
@@ -132,7 +132,7 @@ export function HomeTab({ setTab }) {
               onClick={() => toggle(m.f)}
               style={{ display: 'flex', gap: 10, alignItems: 'center', padding: '8px 0', cursor: 'pointer', borderTop: i > 0 ? '1px solid var(--border)' : 'none' }}
             >
-              <CheckCircle2 size={18} color={today[m.f] ? 'var(--green)' : 'var(--text3)'} strokeWidth={today[m.f] ? 2.5 : 1.5} style={{ flexShrink: 0 }} />
+              <CheckCircle2 size={18} color={today[m.f] ? 'var(--green)' : 'var(--text2)'} strokeWidth={today[m.f] ? 2.5 : 1.5} style={{ flexShrink: 0 }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontSize: 12, color: today[m.f] ? 'var(--text3)' : 'var(--text)', textDecoration: today[m.f] ? 'line-through' : 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {m.d?.name}

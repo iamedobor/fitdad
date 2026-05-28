@@ -45,7 +45,7 @@ export function LogTab() {
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: 28, fontWeight: 700, color: done === 5 ? 'var(--green)' : 'var(--text)' }}>{done}/5</div>
-          <div style={{ fontSize: 10, color: 'var(--text3)' }}>complete</div>
+          <div style={{ fontSize: 10, color: 'var(--text2)' }}>complete</div>
         </div>
       </div>
 
@@ -69,13 +69,13 @@ export function LogTab() {
         >
           <CheckCircle2
             size={22}
-            color={today[item.f] ? 'var(--green)' : 'var(--text3)'}
+            color={today[item.f] ? 'var(--green)' : 'var(--text2)'}
             strokeWidth={today[item.f] ? 2.5 : 1.5}
             style={{ flexShrink: 0 }}
           />
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 13, fontWeight: 500, color: today[item.f] ? 'var(--green)' : 'var(--text)' }}>{item.l}</div>
-            <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 1 }}>{item.s}</div>
+            <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 1 }}>{item.s}</div>
           </div>
         </div>
       ))}

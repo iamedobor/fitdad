@@ -48,7 +48,7 @@ export function TrainTab({ onEditWorkout }) {
                       <span style={{ fontSize: 10, background: 'rgba(34,201,122,0.15)', color: 'var(--green)', padding: '2px 8px', borderRadius: 20 }}>Done</span>
                     )}
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{w.type} - {w.exercises.length} exercises</div>
+                  <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 2 }}>{w.type} - {w.exercises.length} exercises</div>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -59,10 +59,10 @@ export function TrainTab({ onEditWorkout }) {
                     aria-label={`Edit ${w.day} workout`}
                     style={{ padding: 4, borderRadius: 6, background: 'var(--bg3)', border: '1px solid var(--border2)', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
                   >
-                    <Pencil size={11} color="var(--text3)" />
+                    <Pencil size={11} color="var(--text2)" />
                   </span>
                 )}
-                {isOpen ? <ChevronUp size={14} color="var(--text3)" /> : <ChevronDown size={14} color="var(--text3)" />}
+                {isOpen ? <ChevronUp size={14} color="var(--text2)" /> : <ChevronDown size={14} color="var(--text2)" />}
               </div>
             </button>
 
@@ -72,11 +72,11 @@ export function TrainTab({ onEditWorkout }) {
                   <div key={i} style={{ padding: '9px 0', borderTop: i > 0 ? '1px solid var(--border)' : 'none' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 3 }}>
                       <span style={{ fontWeight: 500, fontSize: 13 }}>{ex.name}</span>
-                      <span style={{ fontSize: 11, color: 'var(--text3)', fontFamily: 'DM Mono, monospace' }}>
+                      <span style={{ fontSize: 11, color: 'var(--text2)', fontFamily: 'DM Mono, monospace' }}>
                         {ex.sets}x{ex.reps} - {ex.rest}
                       </span>
                     </div>
-                    <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 2 }}>Home: {ex.homeAlt}</div>
+                    <div style={{ fontSize: 11, color: 'var(--text2)', marginBottom: 2 }}>Home: {ex.homeAlt}</div>
                     <div style={{ fontSize: 11, color: w.accent + 'bb', fontStyle: 'italic' }}>{ex.tip}</div>
                   </div>
                 ))}
@@ -97,7 +97,7 @@ export function TrainTab({ onEditWorkout }) {
       <Card style={{ textAlign: 'center', padding: '14px' }}>
         <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 3 }}>Rest days: Wednesday, Saturday, Sunday</div>
         <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 2 }}>Light walks encouraged - 7,000+ steps</div>
-        <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 4 }}>Recovery is when muscle is built. Never skip it.</div>
+        <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 4 }}>Recovery is when muscle is built. Never skip it.</div>
       </Card>
     </div>
   );
