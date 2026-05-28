@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { ChevronRight, ChevronLeft, Check } from 'lucide-react';
 import { useApp } from '../../context/AppContext.jsx';
 
+const ACTIVITY_OPTIONS = [
+  { id: 'sedentary', label: 'Sedentary', description: 'Desk job, little or no exercise. Mostly sitting during the day.', multiplier: 1.2 },
+  { id: 'light', label: 'Lightly active', description: 'Light exercise 1-3 days per week. On your feet occasionally.', multiplier: 1.375 },
+  { id: 'moderate', label: 'Moderately active', description: 'Moderate exercise 3-5 days per week. Active job or regular training.', multiplier: 1.55 },
+  { id: 'very', label: 'Very active', description: 'Hard exercise 6-7 days per week. Physical job or daily intense training.', multiplier: 1.725 },
+];
+
 const DIET_OPTIONS = [
   { id: 'low-carb', label: 'Low Carb', description: 'High protein, moderate fat, minimal starchy carbs. The default plan.' },
   { id: 'keto', label: 'Ketogenic', description: 'Very low carb, high fat. Targets nutritional ketosis.' },
@@ -10,8 +17,9 @@ const DIET_OPTIONS = [
 ];
 
 const FASTING_OPTIONS = [
-  { id: '16:8', label: '16:8', start: 12, end: 20, description: 'Fast 16 hours. Eat noon to 8pm. Most effective for fat loss.' },
-  { id: '14:10', label: '14:10', start: 10, end: 20, description: 'Fast 14 hours. Eat 10am to 8pm. Good starting point.' },
+  { id: '16:8', label: '16:8', start: 12, end: 20, description: 'Fast 16 hours. Eat noon to 8pm. Most popular for fat loss.' },
+  { id: '14:10', label: '14:10', start: 10, end: 20, description: 'Fast 14 hours. Eat 10am to 8pm. A solid starting point.' },
+  { id: '18:6', label: '18:6', start: 14, end: 20, description: 'Fast 18 hours. Eat 2pm to 8pm. More aggressive fat loss.' },
   { id: 'custom', label: 'Custom', start: null, end: null, description: 'Set your own eating window in Settings after setup.' },
 ];
 
@@ -25,7 +33,7 @@ function StepIndicator({ current, total }) {
             height: 3,
             borderRadius: 2,
             flex: 1,
-            maxWidth: 40,
+            maxWidth: 36,
             background: i <= current ? 'var(--accent)' : 'var(--bg4)',
             transition: 'background 0.3s',
           }}
@@ -44,19 +52,48 @@ function Field({ label, children }) {
   );
 }
 
+function OptionButton({ selected, onClick, label, description }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: '12px 14px',
+        borderRadius: 'var(--r2)',
+        border: `1px solid ${selected ? 'rgba(230,57,70,0.5)' : 'var(--border)'}`,
+        background: selected ? 'rgba(230,57,70,0.1)' : 'var(--bg2)',
+        cursor: 'pointer',
+        textAlign: 'left',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', marginBottom: 2 }}>{label}</div>
+        <div style={{ fontSize: 11, color: 'var(--text3)' }}>{description}</div>
+      </div>
+      {selected && <Check size={14} color="var(--accent)" style={{ flexShrink: 0, marginLeft: 10 }} />}
+    </button>
+  );
+}
+
 export function OnboardingFlow() {
   const { setProfile, setSettings, settings } = useApp();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
-    name: '', age: '', gender: 'male', heightCm: '', startWeight: '', startWaist: '',
-    goalWeight: '', dietType: 'low-carb', fastingPreset: '16:8',
-    windowStart: 12, windowEnd: 20,
+    name: '', age: '', gender: 'male', heightCm: '',
+    startWeight: '', startWaist: '', goalWeight: '',
+    activityLevel: 'moderate',
+    dietType: 'low-carb',
+    fastingPreset: '16:8', windowStart: 12, windowEnd: 20,
   });
 
   const upd = (k, v) => setForm((p) => ({ ...p, [k]: v }));
-  const TOTAL_STEPS = 5;
+  const TOTAL_STEPS = 6;
 
   const finish = () => {
+    const activity = ACTIVITY_OPTIONS.find((a) => a.id === form.activityLevel);
     const profile = {
       name: form.name.trim(),
       age: form.age ? parseInt(form.age) : null,
@@ -65,6 +102,8 @@ export function OnboardingFlow() {
       startWeight: form.startWeight ? parseFloat(form.startWeight) : null,
       startWaist: form.startWaist ? parseFloat(form.startWaist) : null,
       goalWeight: form.goalWeight ? parseFloat(form.goalWeight) : null,
+      activityLevel: form.activityLevel,
+      activityMultiplier: activity?.multiplier ?? 1.55,
       dietType: form.dietType,
       onboardedAt: new Date().toISOString(),
     };
@@ -93,7 +132,7 @@ export function OnboardingFlow() {
     // Step 1: Personal info
     <div key="personal" className="fade-up">
       <h2 style={headStyle}>About you</h2>
-      <p style={subStyle}>Used to personalise goals and calorie targets.</p>
+      <p style={subStyle}>Used to personalise your calorie targets and BMI.</p>
       <Field label="First name">
         <input value={form.name} onChange={(e) => upd('name', e.target.value)} placeholder="e.g. Marcus" />
       </Field>
@@ -121,7 +160,7 @@ export function OnboardingFlow() {
       <Field label="Current weight (kg)">
         <input type="number" step="0.1" value={form.startWeight} onChange={(e) => upd('startWeight', e.target.value)} placeholder="e.g. 94.5" />
       </Field>
-      <Field label="Waist circumference (cm) - optional">
+      <Field label="Waist circumference (cm) — optional">
         <input type="number" step="0.5" value={form.startWaist} onChange={(e) => upd('startWaist', e.target.value)} placeholder="e.g. 102" />
       </Field>
       <Field label="Target weight (kg)">
@@ -129,84 +168,70 @@ export function OnboardingFlow() {
       </Field>
     </div>,
 
-    // Step 3: Diet type
-    <div key="diet" className="fade-up">
-      <h2 style={headStyle}>Diet approach</h2>
-      <p style={subStyle}>This shapes your meal plan and macros.</p>
+    // Step 3: Activity level
+    <div key="activity" className="fade-up">
+      <h2 style={headStyle}>Activity level</h2>
+      <p style={subStyle}>Used to calculate your daily calorie target. Be honest — most people overestimate this.</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {DIET_OPTIONS.map((opt) => (
-          <button
+        {ACTIVITY_OPTIONS.map((opt) => (
+          <OptionButton
             key={opt.id}
-            onClick={() => upd('dietType', opt.id)}
-            style={{
-              padding: '12px 14px',
-              borderRadius: 'var(--r2)',
-              border: `1px solid ${form.dietType === opt.id ? 'rgba(230,57,70,0.5)' : 'var(--border)'}`,
-              background: form.dietType === opt.id ? 'rgba(230,57,70,0.1)' : 'var(--bg2)',
-              cursor: 'pointer',
-              textAlign: 'left',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', marginBottom: 2 }}>{opt.label}</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)' }}>{opt.description}</div>
-            </div>
-            {form.dietType === opt.id && <Check size={14} color="var(--accent)" style={{ flexShrink: 0, marginLeft: 10 }} />}
-          </button>
+            selected={form.activityLevel === opt.id}
+            onClick={() => upd('activityLevel', opt.id)}
+            label={opt.label}
+            description={opt.description}
+          />
         ))}
       </div>
     </div>,
 
-    // Step 4: Fasting window
+    // Step 4: Diet type
+    <div key="diet" className="fade-up">
+      <h2 style={headStyle}>Diet approach</h2>
+      <p style={subStyle}>This shapes your meal plan and macro targets.</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {DIET_OPTIONS.map((opt) => (
+          <OptionButton
+            key={opt.id}
+            selected={form.dietType === opt.id}
+            onClick={() => upd('dietType', opt.id)}
+            label={opt.label}
+            description={opt.description}
+          />
+        ))}
+      </div>
+    </div>,
+
+    // Step 5: Fasting window
     <div key="fasting" className="fade-up">
       <h2 style={headStyle}>Fasting window</h2>
-      <p style={subStyle}>How many hours will you fast each day?</p>
+      <p style={subStyle}>How many hours will you fast each day? You can change this any time in Settings.</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
         {FASTING_OPTIONS.map((opt) => (
-          <button
+          <OptionButton
             key={opt.id}
+            selected={form.fastingPreset === opt.id}
             onClick={() => {
               upd('fastingPreset', opt.id);
               if (opt.start) { upd('windowStart', opt.start); upd('windowEnd', opt.end); }
             }}
-            style={{
-              padding: '12px 14px',
-              borderRadius: 'var(--r2)',
-              border: `1px solid ${form.fastingPreset === opt.id ? 'rgba(230,57,70,0.5)' : 'var(--border)'}`,
-              background: form.fastingPreset === opt.id ? 'rgba(230,57,70,0.1)' : 'var(--bg2)',
-              cursor: 'pointer',
-              textAlign: 'left',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', marginBottom: 2 }}>{opt.label}</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)' }}>{opt.description}</div>
-            </div>
-            {form.fastingPreset === opt.id && <Check size={14} color="var(--accent)" style={{ flexShrink: 0, marginLeft: 10 }} />}
-          </button>
+            label={opt.label}
+            description={opt.description}
+          />
         ))}
       </div>
       <div style={{ background: 'rgba(230,57,70,0.07)', border: '1px solid rgba(230,57,70,0.18)', borderRadius: 'var(--r2)', padding: '10px 13px', fontSize: 12, color: 'var(--text2)', lineHeight: 1.6 }}>
-        16:8 is recommended for most people. Fasting for 16 hours keeps insulin low and accelerates fat burning without sacrificing muscle.
+        No eating window is right for everyone. Start with what feels sustainable. Tighter windows generally produce faster results.
       </div>
     </div>,
   ];
 
   const isLast = step === TOTAL_STEPS - 1;
-  const canProceed = step === 0 ? false : true;
 
   return (
     <div style={{ maxWidth: 480, margin: '0 auto', minHeight: '100vh', background: 'var(--bg)', padding: '24px 20px 40px', display: 'flex', flexDirection: 'column' }}>
       {step > 0 && <StepIndicator current={step - 1} total={TOTAL_STEPS - 1} />}
-      <div style={{ flex: 1 }}>
-        {steps[step]}
-      </div>
+      <div style={{ flex: 1 }}>{steps[step]}</div>
       {step > 0 && (
         <div style={{ display: 'flex', gap: 10, marginTop: 24 }}>
           <button onClick={() => setStep((s) => s - 1)} style={btnStyle('var(--bg3)', 'var(--text2)', '1px solid var(--border2)')}>
