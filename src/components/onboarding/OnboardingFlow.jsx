@@ -46,7 +46,7 @@ function StepIndicator({ current, total }) {
 function Field({ label, children }) {
   return (
     <div style={{ marginBottom: 14 }}>
-      <label style={{ fontSize: 11, color: 'var(--text3)', display: 'block', marginBottom: 5, fontWeight: 500 }}>{label}</label>
+      <label style={{ fontSize: 11, color: 'var(--text)', display: 'block', marginBottom: 5, fontWeight: 500 }}>{label}</label>
       {children}
     </div>
   );

@@ -47,8 +47,8 @@ export function BottomNav({ active, onChange }) {
               transition: 'border 0.2s',
             }}
           >
-            <Icon size={16} color={isActive ? 'var(--accent)' : 'var(--text2)'} strokeWidth={isActive ? 2.5 : 1.8} />
-            <span style={{ fontSize: 9, color: isActive ? 'var(--accent)' : 'var(--text2)', fontWeight: isActive ? 600 : 400 }}>
+            <Icon size={16} color={isActive ? 'var(--accent)' : 'var(--text)'} strokeWidth={isActive ? 2.5 : 1.8} />
+            <span style={{ fontSize: 9, color: isActive ? 'var(--accent)' : 'var(--text)', fontWeight: isActive ? 600 : 400 }}>
               {label}
             </span>
           </button>

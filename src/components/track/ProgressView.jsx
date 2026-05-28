@@ -42,8 +42,8 @@ export function ProgressView() {
   const currentWeight = latest?.weight || profile?.startWeight;
   const bmi = calcBMI(currentWeight, profile?.heightCm);
   const tdee = calcTDEE(profile);
-  const dailyTarget = calcDailyTarget(tdee, pace);
-  const weeksToGoal = calcWeeksToGoal(currentWeight, gw, dailyTarget ? tdee - dailyTarget : null);
+  const dailyTarget = settings?.customCalorieTarget || calcDailyTarget(tdee, pace);
+  const weeksToGoal = calcWeeksToGoal(currentWeight, gw, dailyTarget && tdee ? tdee - dailyTarget : null);
   const weightPts = progress.filter((p) => p.weight);
 
   return (
@@ -187,11 +187,11 @@ export function ProgressView() {
         <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>Log this week</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 8 }}>
           <div>
-            <label style={{ fontSize: 10, color: 'var(--text2)', display: 'block', marginBottom: 4 }}>Weight (kg)</label>
+            <label style={{ fontSize: 10, color: 'var(--text)', display: 'block', marginBottom: 4 }}>Weight (kg)</label>
             <input type="number" step="0.1" value={w} onChange={(e) => setW(e.target.value)} placeholder="e.g. 88.5" />
           </div>
           <div>
-            <label style={{ fontSize: 10, color: 'var(--text2)', display: 'block', marginBottom: 4 }}>Waist (cm)</label>
+            <label style={{ fontSize: 10, color: 'var(--text)', display: 'block', marginBottom: 4 }}>Waist (cm)</label>
             <input type="number" step="0.5" value={c} onChange={(e) => setC(e.target.value)} placeholder="e.g. 96" />
           </div>
         </div>

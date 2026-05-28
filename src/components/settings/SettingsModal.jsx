@@ -90,7 +90,7 @@ export function SettingsModal({ onClose }) {
 
         {/* Goals */}
         <Section title="Goals">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 8 }}>
             <div>
               <label style={labelStyle}>Target weight (kg)</label>
               <input type="number" step="0.5" value={s.goalWeight || ''} onChange={(e) => upd('goalWeight', e.target.value ? parseFloat(e.target.value) : null)} placeholder="e.g. 80" />
@@ -98,6 +98,19 @@ export function SettingsModal({ onClose }) {
             <div>
               <label style={labelStyle}>Target waist (cm)</label>
               <input type="number" step="0.5" value={s.goalWaist || ''} onChange={(e) => upd('goalWaist', e.target.value ? parseFloat(e.target.value) : null)} placeholder="e.g. 85" />
+            </div>
+          </div>
+          <div>
+            <label style={labelStyle}>Daily calorie target (kcal) — optional override</label>
+            <input
+              type="number"
+              step="50"
+              value={s.customCalorieTarget || ''}
+              onChange={(e) => upd('customCalorieTarget', e.target.value ? parseInt(e.target.value) : null)}
+              placeholder="Leave blank to use calculated target"
+            />
+            <div style={{ fontSize: 10, color: 'var(--text2)', marginTop: 5 }}>
+              Set a fixed daily target if you prefer not to use the TDEE calculation.
             </div>
           </div>
         </Section>
@@ -160,4 +173,4 @@ function Section({ title, children }) {
 const overlayStyle = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' };
 const sheetStyle = { background: 'var(--bg2)', borderRadius: '20px 20px 0 0', width: '100%', maxWidth: 480, padding: '20px 20px 40px', maxHeight: '90vh', overflowY: 'auto', border: '1px solid var(--border2)' };
 const closeBtnStyle = { width: 30, height: 30, borderRadius: '50%', background: 'var(--bg3)', border: '1px solid var(--border2)', color: 'var(--text)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' };
-const labelStyle = { fontSize: 10, color: 'var(--text3)', display: 'block', marginBottom: 4, fontWeight: 500 };
+const labelStyle = { fontSize: 10, color: 'var(--text)', display: 'block', marginBottom: 4, fontWeight: 500 };

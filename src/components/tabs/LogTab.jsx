@@ -83,7 +83,7 @@ export function LogTab() {
       <Card>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 500 }}>
-            <Droplets size={14} color="var(--blue)" /> Water
+            <Droplets size={14} color="var(--accent)" /> Water
           </div>
           <div style={{ fontSize: 12, color: 'var(--text2)' }}>{today.water || 0}/8</div>
         </div>
@@ -93,7 +93,7 @@ export function LogTab() {
               key={n}
               onClick={() => setWater(n)}
               aria-label={`${n} glass${n > 1 ? 'es' : ''}`}
-              style={{ flex: 1, height: 30, borderRadius: 'var(--r3)', background: (today.water || 0) >= n ? 'rgba(77,166,255,0.2)' : 'var(--bg3)', border: `1px solid ${(today.water || 0) >= n ? 'rgba(77,166,255,0.4)' : 'var(--border)'}`, cursor: 'pointer' }}
+              style={{ flex: 1, height: 30, borderRadius: 'var(--r3)', background: (today.water || 0) >= n ? 'rgba(230,57,70,0.2)' : 'var(--bg3)', border: `1px solid ${(today.water || 0) >= n ? 'rgba(230,57,70,0.4)' : 'var(--border)'}`, cursor: 'pointer' }}
             />
           ))}
         </div>

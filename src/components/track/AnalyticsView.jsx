@@ -150,11 +150,11 @@ export function AnalyticsView() {
         <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 56 }}>
           {dailyData.map((d) => (
             <div key={d.key} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-              {d.water > 0 && <div style={{ fontSize: 9, color: 'var(--blue)', fontWeight: 600 }}>{d.water}</div>}
+              {d.water > 0 && <div style={{ fontSize: 9, color: 'var(--accent)', fontWeight: 600 }}>{d.water}</div>}
               <div style={{
                 width: '100%',
                 height: Math.max((d.water / 8) * 36, d.water > 0 ? 4 : 2),
-                background: d.water >= 8 ? 'var(--green)' : 'rgba(77,166,255,0.7)',
+                background: d.water >= 8 ? 'var(--green)' : 'rgba(230,57,70,0.7)',
                 borderRadius: 3,
                 alignSelf: 'flex-end',
               }} />
