@@ -1,4 +1,5 @@
 import { Card } from '../ui/Card.jsx';
+import { InfoTooltip } from '../ui/InfoTooltip.jsx';
 import { useApp } from '../../context/AppContext.jsx';
 import { useTick } from '../../hooks/useTick.js';
 import { getFastingState } from '../../utils/fasting.js';
@@ -38,9 +39,12 @@ export function FastingTab() {
   return (
     <div className="fade-up" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div>
-        <div style={{ fontSize: 20, fontWeight: 600 }}>Fasting timer</div>
+        <div style={{ fontSize: 20, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 7 }}>
+          Fasting timer
+          <InfoTooltip text="Intermittent fasting restricts eating to a set window each day. Your body burns stored fat during the fasting period as insulin levels drop. Common windows: 16:8 (fast 16h, eat 8h), 14:10, 18:6, or fully custom." />
+        </div>
         <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>
-          {f.fastHours}:8 protocol - {f.windowStart}:00 to {f.windowEnd}:00
+          {f.fastHours}h fast - eating {f.windowStart}:00 to {f.windowEnd}:00
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { Card } from '../ui/Card.jsx';
+import { InfoTooltip } from '../ui/InfoTooltip.jsx';
 import { calcBMI, calcTDEE, calcDailyTarget, calcWeeksToGoal } from '../../utils/tdee.js';
 
 const PACE_OPTIONS = [
@@ -53,14 +54,18 @@ export function ProgressView() {
         <div style={{ display: 'grid', gridTemplateColumns: bmi && tdee ? '1fr 1fr' : '1fr', gap: 10 }}>
           {bmi && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>BMI</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                BMI <InfoTooltip text="Body Mass Index — weight divided by height squared. Under 18.5: Underweight. 18.5–24.9: Healthy. 25–29.9: Overweight. 30+: Obese. BMI doesn't account for muscle mass, so use it as a guide rather than a verdict." size={11} />
+              </div>
               <div style={{ fontSize: 26, fontWeight: 700, color: bmi.color }}>{bmi.value}</div>
               <div style={{ fontSize: 11, color: bmi.color, marginTop: 3, fontWeight: 500 }}>{bmi.category}</div>
             </Card>
           )}
           {tdee && (
             <Card style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500 }}>TDEE</div>
+              <div style={{ fontSize: 10, color: 'var(--text2)', marginBottom: 4, fontWeight: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                TDEE <InfoTooltip text="Total Daily Energy Expenditure — the calories your body burns in a full day at your activity level. Eat below this to lose fat. Calculated using the Mifflin-St Jeor formula." size={11} />
+              </div>
               <div style={{ fontSize: 26, fontWeight: 700 }}>{tdee.toLocaleString()}</div>
               <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 3 }}>kcal/day to maintain</div>
             </Card>
@@ -71,7 +76,10 @@ export function ProgressView() {
       {/* Daily calorie target */}
       {tdee && (
         <Card>
-          <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>Daily calorie target</div>
+          <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+            Daily calorie target
+            <InfoTooltip text="A calorie deficit means eating less than you burn. Gradual (−250 kcal/day) ≈ 0.25 kg/week lost. Moderate (−500) ≈ 0.5 kg/week. Aggressive (−750) ≈ 0.75 kg/week. Start moderate and adjust based on results." />
+          </div>
           <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
             {PACE_OPTIONS.map((p) => (
               <button

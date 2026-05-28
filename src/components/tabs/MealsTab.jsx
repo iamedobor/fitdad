@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { RotateCcw, Pencil } from 'lucide-react';
+import { InfoTooltip } from '../ui/InfoTooltip.jsx';
 import { Card } from '../ui/Card.jsx';
 import { SubNav } from '../ui/SubNav.jsx';
 import { ProgressBar } from '../ui/ProgressBar.jsx';
@@ -47,7 +48,10 @@ export function MealsTab({ onEditMeal }) {
 
   return (
     <div className="fade-up" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ fontSize: 20, fontWeight: 600 }}>Meals</div>
+      <div style={{ fontSize: 20, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 7 }}>
+        Meals
+        <InfoTooltip text="Macros are the three main nutrients: Protein builds and preserves muscle. Carbs provide energy. Fat supports hormones and satiety. On a fat loss plan, high protein (2g per kg of bodyweight) is the priority." />
+      </div>
       <SubNav options={navOptions} value={view} onChange={setView} />
 
       {view === 'plan' && (
