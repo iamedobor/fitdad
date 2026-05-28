@@ -1,9 +1,10 @@
-import { ChevronRight, Droplets, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Droplets, CheckCircle2, Flame } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { ProgressBar } from '../ui/ProgressBar.jsx';
 import { useApp } from '../../context/AppContext.jsx';
 import { useTick } from '../../hooks/useTick.js';
 import { getFastingState } from '../../utils/fasting.js';
+import { calcTDEE, calcDailyTarget } from '../../utils/tdee.js';
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -17,6 +18,15 @@ export function HomeTab({ setTab }) {
   const workouts = getWorkouts();
   const workout = workouts.find((w) => w.day === todayName);
   const done = ['meal1', 'snack', 'meal2', 'workout', 'fasting'].filter((k) => today[k]).length;
+
+  const tdee = calcTDEE(profile);
+  const dailyTarget = calcDailyTarget(tdee, 'moderate');
+  const eatenKcal = meals
+    ? (today.meal1 ? meals.meal1?.kcal || 0 : 0) +
+      (today.snack ? meals.snack?.kcal || 0 : 0) +
+      (today.meal2 ? meals.meal2?.kcal || 0 : 0)
+    : 0;
+  const calorieProgress = dailyTarget ? Math.min(eatenKcal / dailyTarget, 1) : 0;
   const hr = new Date().getHours();
   const greeting = hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening';
   const namePart = profile?.name ? `, ${profile.name}` : '';
@@ -131,6 +141,28 @@ export function HomeTab({ setTab }) {
               </div>
             </div>
           ))}
+        </Card>
+      )}
+
+      {dailyTarget && (
+        <Card>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 500 }}>
+              <Flame size={14} color="var(--accent)" /> Calories
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text2)' }}>
+              {eatenKcal} <span style={{ color: 'var(--text3)' }}>/ {dailyTarget} kcal</span>
+            </div>
+          </div>
+          <ProgressBar
+            value={calorieProgress}
+            color={calorieProgress >= 1 ? 'var(--amber)' : 'var(--accent)'}
+          />
+          <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>
+            {dailyTarget - eatenKcal > 0
+              ? `${dailyTarget - eatenKcal} kcal remaining`
+              : 'Daily target reached'}
+          </div>
         </Card>
       )}
 
