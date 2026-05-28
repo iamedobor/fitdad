@@ -119,10 +119,18 @@ export function OnboardingFlow() {
   const steps = [
     // Step 0: Welcome
     <div key="welcome" className="fade-up" style={{ textAlign: 'center', padding: '20px 0' }}>
-      <div style={{ width: 64, height: 64, borderRadius: 18, background: 'rgba(230,57,70,0.15)', border: '1px solid rgba(230,57,70,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 28, fontWeight: 700, color: 'var(--accent)' }}>F</div>
-      <h1 style={{ fontSize: 26, fontWeight: 700, marginBottom: 10, letterSpacing: -0.5 }}>Welcome to FitDad</h1>
+      <div style={{ margin: '0 auto 22px', width: 80, height: 80, borderRadius: 22, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 36px rgba(230,57,70,0.5), 0 0 0 1px rgba(255,255,255,0.08)' }}>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="6" y="36" fontSize="36" fontWeight="900" fill="white" fontFamily="DM Sans, system-ui, sans-serif" letterSpacing="-2">F</text>
+          <circle cx="36" cy="12" r="5" fill="white" fillOpacity="0.25" />
+          <circle cx="36" cy="12" r="2.5" fill="white" />
+        </svg>
+      </div>
+      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8, letterSpacing: -0.5 }}>
+        <span style={{ color: 'var(--accent)' }}>Fit</span><span style={{ color: 'var(--text)' }}>Dad</span>
+      </h1>
       <p style={{ color: 'var(--text2)', lineHeight: 1.65, fontSize: 14, maxWidth: 300, margin: '0 auto 28px' }}>
-        A structured system for losing fat, building strength, and staying consistent. Takes two minutes to set up.
+        Lose fat. Build strength. Stay consistent. Takes two minutes to set up and runs entirely on your device.
       </p>
       <button onClick={() => setStep(1)} style={btnStyle('var(--accent)')}>
         Get started <ChevronRight size={16} style={{ marginLeft: 4 }} />

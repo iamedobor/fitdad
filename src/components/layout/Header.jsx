@@ -20,9 +20,22 @@ export function Header({ onSettingsOpen }) {
         zIndex: 10,
       }}
     >
-      <div>
-        <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: -0.5 }}>FitDad</span>
-        <span style={{ fontSize: 9, color: 'var(--text3)', marginLeft: 8 }}>Fitness and nutrition tracker</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+        <div style={{
+          width: 30, height: 30, borderRadius: 9,
+          background: 'var(--accent)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+          boxShadow: '0 2px 10px rgba(230,57,70,0.45)',
+        }}>
+          <span style={{ fontSize: 15, fontWeight: 800, color: 'white', letterSpacing: -1, lineHeight: 1 }}>F</span>
+        </div>
+        <div>
+          <div style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.5, lineHeight: 1.1 }}>
+            <span style={{ color: 'var(--accent)' }}>Fit</span><span style={{ color: 'var(--text)' }}>Dad</span>
+          </div>
+          <div style={{ fontSize: 9, color: 'var(--text2)', marginTop: 2, letterSpacing: 0.2 }}>Lose fat. Build strength. Stay consistent.</div>
+        </div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {streak > 0 && (
