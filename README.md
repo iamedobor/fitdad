@@ -22,7 +22,7 @@
 
 ## Why I built this
 
-I struggled with my weight for years. I tried the apps, the meal plans, the subscriptions. Most of them were too complicated, too generic, or hiding the useful parts behind a paywall. I wanted something that actually worked for my life — structured, science-backed, no noise, no upsells.
+I struggled with my weight for years. I tried the apps, the meal plans, the subscriptions. Most of them were too complicated, too generic, or hiding the useful parts behind a paywall. I wanted something structured, science-backed, no noise, no upsells. Something that actually worked for my life.
 
 So I built it myself. And then I open-sourced it so anyone can use it, fork it, and make it better.
 
@@ -36,7 +36,7 @@ FitDad combines intermittent fasting tracking, structured meal planning, progres
 |---|---|
 | **Fasting tracker** | Real-time countdown with circular SVG ring. Fully customisable window with presets (16:8, 14:10, 18:6, 20:4) or your own hours. |
 | **Meal planning** | 7-day meal plan with full macros. Edit any meal to match your own preferences. Sunday prep guide and interactive shopping list. |
-| **Workout programming** | Upper/lower split, 4 sessions per week. Home gym alternatives for every exercise. Full edit support — add, remove, or swap exercises. |
+| **Workout programming** | Upper/lower split, 4 sessions per week. Home gym alternatives for every exercise. Full edit support: add, remove, or swap exercises. |
 | **BMI calculator** | Computed from your profile. Colour-coded category (underweight / healthy / overweight / obese). |
 | **TDEE + calorie target** | Mifflin-St Jeor formula with your activity multiplier. Choose gradual, moderate, or aggressive deficit. Weeks-to-goal countdown. |
 | **Daily calorie tracking** | Ticking a meal on the Home tab adds its kcal to a live progress bar against your daily target. |
@@ -60,11 +60,11 @@ FitDad combines intermittent fasting tracking, structured meal planning, progres
 
 </div>
 
-- **React 18** — functional components, hooks, context API
-- **Vite 5** — fast dev server, optimised production builds
-- **Lucide React** — clean, consistent icon set
-- **vite-plugin-pwa** — service worker, offline support, install prompt
-- **localStorage** — all data stored client-side, zero backend
+- **React 18** - functional components, hooks, context API
+- **Vite 5** - fast dev server, optimised production builds
+- **Lucide React** - clean, consistent icon set
+- **vite-plugin-pwa** - service worker, offline support, install prompt
+- **localStorage** - all data stored client-side, zero backend
 
 ---
 
@@ -104,7 +104,7 @@ The repo ships with a GitHub Actions workflow at `.github/workflows/deploy.yml`.
 1. Fork this repository
 2. Go to your fork's **Settings > Pages**
 3. Set source to **GitHub Actions**
-4. Push any change to `main` — the action handles the rest
+4. Push any change to `main` and the action handles the rest
 
 Your app will be live at `https://your-username.github.io/fitdad/`.
 
@@ -130,7 +130,7 @@ fitdad/
 │   │   ├── tabs/         # Home, Fast, Meals, Train, Log, Track
 │   │   ├── track/        # ProgressView, JournalView, PhotosView
 │   │   └── ui/           # Card, SubNav, Toggle, ProgressBar
-│   ├── context/          # AppContext — global state
+│   ├── context/          # AppContext - global state
 │   ├── data/             # Default meals, workouts, shopping, prep steps
 │   ├── hooks/            # useTick, useLocalStorage
 │   └── utils/            # storage, fasting, tdee, image, exportImport, notifications
@@ -154,7 +154,7 @@ fitdad/
 - [x] BMI calculator
 - [x] TDEE and daily calorie target
 - [x] Data export and import
-- [x] PWA — install on mobile, works offline
+- [x] PWA - install on mobile, works offline
 - [ ] Keto meal plan template
 - [ ] Mediterranean meal plan template
 - [ ] Barcode food scanner
@@ -171,9 +171,9 @@ Contributions are welcome and genuinely appreciated. Read [CONTRIBUTING.md](CONT
 
 The highest-impact areas right now:
 
-- **New meal plan templates** — keto, Mediterranean, balanced ([#1](https://github.com/iamedobor/fitdad/issues/1), [#2](https://github.com/iamedobor/fitdad/issues/2))
-- **Accessibility improvements** — keyboard nav, focus management, ARIA ([#4](https://github.com/iamedobor/fitdad/issues/4))
-- **Light/dark theme toggle** — CSS variable swap ([#5](https://github.com/iamedobor/fitdad/issues/5))
+- **New meal plan templates** - keto, Mediterranean, balanced ([#1](https://github.com/iamedobor/fitdad/issues/1), [#2](https://github.com/iamedobor/fitdad/issues/2))
+- **Accessibility improvements** - keyboard nav, focus management, ARIA ([#4](https://github.com/iamedobor/fitdad/issues/4))
+- **Light/dark theme toggle** - CSS variable swap ([#5](https://github.com/iamedobor/fitdad/issues/5))
 
 **[See all open issues →](https://github.com/iamedobor/fitdad/issues?q=label%3A%22good+first+issue%22)**
 
@@ -181,7 +181,7 @@ The highest-impact areas right now:
 
 ## License
 
-MIT — use it, fork it, build on it. See [LICENSE](LICENSE).
+MIT. Use it, fork it, build on it. See [LICENSE](LICENSE).
 
 ---
 
