@@ -63,8 +63,8 @@ export function HomeTab({ setTab }) {
       <div
         onClick={() => setTab('fasting')}
         style={{
-          background: f.isOpen ? 'rgba(34,201,122,0.07)' : 'rgba(124,106,247,0.07)',
-          border: `1px solid ${f.isOpen ? 'rgba(34,201,122,0.2)' : 'rgba(124,106,247,0.2)'}`,
+          background: f.isOpen ? 'rgba(34,201,122,0.07)' : 'rgba(230,57,70,0.07)',
+          border: `1px solid ${f.isOpen ? 'rgba(34,201,122,0.2)' : 'rgba(230,57,70,0.2)'}`,
           borderRadius: 'var(--r)',
           padding: '13px 15px',
           display: 'flex',

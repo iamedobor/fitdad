@@ -83,7 +83,7 @@ export function TrainTab({ onEditWorkout }) {
                 {isToday && (
                   <button
                     onClick={toggleDone}
-                    style={{ width: '100%', marginTop: 12, padding: '10px', borderRadius: 'var(--r2)', cursor: 'pointer', fontWeight: 500, fontSize: 13, background: today.workout ? 'rgba(34,201,122,0.1)' : 'rgba(124,106,247,0.1)', border: `1px solid ${today.workout ? 'rgba(34,201,122,0.35)' : 'rgba(124,106,247,0.35)'}`, color: today.workout ? 'var(--green)' : 'var(--accent)' }}
+                    style={{ width: '100%', marginTop: 12, padding: '10px', borderRadius: 'var(--r2)', cursor: 'pointer', fontWeight: 500, fontSize: 13, background: today.workout ? 'rgba(34,201,122,0.1)' : 'rgba(230,57,70,0.1)', border: `1px solid ${today.workout ? 'rgba(34,201,122,0.35)' : 'rgba(230,57,70,0.35)'}`, color: today.workout ? 'var(--green)' : 'var(--accent)' }}
                   >
                     {today.workout ? 'Session complete' : 'Mark session as done'}
                   </button>

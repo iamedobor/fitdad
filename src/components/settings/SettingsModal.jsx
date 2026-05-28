@@ -115,7 +115,7 @@ export function SettingsModal({ onClose }) {
               sub="Meals, workout, and window open/close alerts"
             />
           ) : (
-            <button onClick={requestNotifs} style={{ width: '100%', padding: '10px', borderRadius: 'var(--r2)', background: 'rgba(124,106,247,0.12)', border: '1px solid rgba(124,106,247,0.35)', color: 'var(--accent)', fontSize: 13, fontWeight: 500, cursor: 'pointer' }}>
+            <button onClick={requestNotifs} style={{ width: '100%', padding: '10px', borderRadius: 'var(--r2)', background: 'rgba(230,57,70,0.12)', border: '1px solid rgba(230,57,70,0.35)', color: 'var(--accent)', fontSize: 13, fontWeight: 500, cursor: 'pointer' }}>
               Enable reminders
             </button>
           )}

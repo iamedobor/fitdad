@@ -80,7 +80,7 @@ export function OnboardingFlow() {
   const steps = [
     // Step 0: Welcome
     <div key="welcome" className="fade-up" style={{ textAlign: 'center', padding: '20px 0' }}>
-      <div style={{ width: 64, height: 64, borderRadius: 18, background: 'rgba(124,106,247,0.15)', border: '1px solid rgba(124,106,247,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 28, fontWeight: 700, color: 'var(--accent)' }}>F</div>
+      <div style={{ width: 64, height: 64, borderRadius: 18, background: 'rgba(230,57,70,0.15)', border: '1px solid rgba(230,57,70,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 28, fontWeight: 700, color: 'var(--accent)' }}>F</div>
       <h1 style={{ fontSize: 26, fontWeight: 700, marginBottom: 10, letterSpacing: -0.5 }}>Welcome to FitDad</h1>
       <p style={{ color: 'var(--text2)', lineHeight: 1.65, fontSize: 14, maxWidth: 300, margin: '0 auto 28px' }}>
         A structured system for losing fat, building strength, and staying consistent. Takes two minutes to set up.
@@ -141,8 +141,8 @@ export function OnboardingFlow() {
             style={{
               padding: '12px 14px',
               borderRadius: 'var(--r2)',
-              border: `1px solid ${form.dietType === opt.id ? 'rgba(124,106,247,0.5)' : 'var(--border)'}`,
-              background: form.dietType === opt.id ? 'rgba(124,106,247,0.1)' : 'var(--bg2)',
+              border: `1px solid ${form.dietType === opt.id ? 'rgba(230,57,70,0.5)' : 'var(--border)'}`,
+              background: form.dietType === opt.id ? 'rgba(230,57,70,0.1)' : 'var(--bg2)',
               cursor: 'pointer',
               textAlign: 'left',
               display: 'flex',
@@ -175,8 +175,8 @@ export function OnboardingFlow() {
             style={{
               padding: '12px 14px',
               borderRadius: 'var(--r2)',
-              border: `1px solid ${form.fastingPreset === opt.id ? 'rgba(124,106,247,0.5)' : 'var(--border)'}`,
-              background: form.fastingPreset === opt.id ? 'rgba(124,106,247,0.1)' : 'var(--bg2)',
+              border: `1px solid ${form.fastingPreset === opt.id ? 'rgba(230,57,70,0.5)' : 'var(--border)'}`,
+              background: form.fastingPreset === opt.id ? 'rgba(230,57,70,0.1)' : 'var(--bg2)',
               cursor: 'pointer',
               textAlign: 'left',
               display: 'flex',
@@ -192,7 +192,7 @@ export function OnboardingFlow() {
           </button>
         ))}
       </div>
-      <div style={{ background: 'rgba(124,106,247,0.07)', border: '1px solid rgba(124,106,247,0.18)', borderRadius: 'var(--r2)', padding: '10px 13px', fontSize: 12, color: 'var(--text2)', lineHeight: 1.6 }}>
+      <div style={{ background: 'rgba(230,57,70,0.07)', border: '1px solid rgba(230,57,70,0.18)', borderRadius: 'var(--r2)', padding: '10px 13px', fontSize: 12, color: 'var(--text2)', lineHeight: 1.6 }}>
         16:8 is recommended for most people. Fasting for 16 hours keeps insulin low and accelerates fat burning without sacrificing muscle.
       </div>
     </div>,

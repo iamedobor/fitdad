@@ -3,7 +3,7 @@ export const DEFAULT_WORKOUTS = [
     id: 'mon',
     day: 'Monday',
     type: 'Upper - Push',
-    accent: '#7c6af7',
+    accent: '#e63946',
     exercises: [
       { name: 'Bench Press', sets: 4, reps: '8-10', rest: '90s', homeAlt: 'Push-ups 4x15', tip: 'Shoulder blades retracted, lower bar to chest' },
       { name: 'Overhead Press', sets: 3, reps: '10', rest: '90s', homeAlt: 'Pike Push-ups 3x12', tip: 'Brace core, do not arch lower back' },

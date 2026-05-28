@@ -121,7 +121,7 @@ export function MealsTab({ onEditMeal }) {
           <div style={{ fontSize: 12, color: 'var(--text2)', marginBottom: 14 }}>Around 60 minutes on Sunday sets you up for the whole week.</div>
           {PREP_STEPS.map((s, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, padding: '11px 0', borderTop: i > 0 ? '1px solid var(--border)' : 'none' }}>
-              <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'rgba(124,106,247,0.12)', border: '1px solid rgba(124,106,247,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 600, color: 'var(--accent)', flexShrink: 0 }}>{s.n}</div>
+              <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'rgba(230,57,70,0.12)', border: '1px solid rgba(230,57,70,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 600, color: 'var(--accent)', flexShrink: 0 }}>{s.n}</div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 3 }}>{s.title}</div>
                 <div style={{ fontSize: 11, color: 'var(--text2)', lineHeight: 1.55 }}>{s.detail}</div>
