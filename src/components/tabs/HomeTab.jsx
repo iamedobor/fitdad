@@ -1,16 +1,103 @@
-import { ChevronRight, Droplets, CheckCircle2, Flame } from 'lucide-react';
+import { ChevronRight, Droplets, CheckCircle2, Flame, TrendingDown } from 'lucide-react';
 import { Card } from '../ui/Card.jsx';
 import { ProgressBar } from '../ui/ProgressBar.jsx';
 import { useApp } from '../../context/AppContext.jsx';
 import { useTick } from '../../hooks/useTick.js';
 import { getFastingState } from '../../utils/fasting.js';
-import { calcTDEE, calcDailyTarget } from '../../utils/tdee.js';
+import { calcTDEE, calcDailyTarget, calcBMI } from '../../utils/tdee.js';
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+function WeightCard({ progress, profile, onLog }) {
+  const weightPts = (progress || []).filter((p) => p.weight);
+  const latest = weightPts[weightPts.length - 1];
+  const first = weightPts[0];
+  const currentWeight = latest?.weight || profile?.startWeight;
+  const bmi = calcBMI(currentWeight, profile?.heightCm);
+  const delta = latest && first && latest !== first && latest.weight && first.weight
+    ? +(latest.weight - first.weight).toFixed(1) : null;
+
+  const hasData = currentWeight && bmi;
+
+  return (
+    <Card
+      style={{ cursor: 'pointer' }}
+      onClick={onLog}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 500 }}>
+          <TrendingDown size={14} color="var(--accent)" /> Weight Progress
+        </div>
+        <span style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 500 }}>Log this week</span>
+      </div>
+
+      {hasData ? (
+        <>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 10 }}>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 700, lineHeight: 1 }}>
+                {currentWeight}
+                <span style={{ fontSize: 13, color: 'var(--text2)', fontWeight: 400 }}> kg</span>
+              </div>
+              {delta !== null && (
+                <div style={{ fontSize: 12, marginTop: 4, fontWeight: 500, color: delta < 0 ? 'var(--green)' : 'var(--accent)' }}>
+                  {delta < 0 ? '' : '+'}{delta} kg since start
+                </div>
+              )}
+            </div>
+            {bmi && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 22, fontWeight: 700, color: bmi.color }}>{bmi.value}</div>
+                <div style={{ fontSize: 10, color: bmi.color, fontWeight: 500, marginTop: 2 }}>{bmi.category}</div>
+                <div style={{ fontSize: 9, color: 'var(--text2)', marginTop: 1 }}>BMI</div>
+              </div>
+            )}
+          </div>
+
+          {weightPts.length >= 2 && (() => {
+            const W = 280, H = 44;
+            const minV = Math.min(...weightPts.map((p) => p.weight)) - 0.5;
+            const maxV = Math.max(...weightPts.map((p) => p.weight)) + 0.5;
+            const px = (i) => (i / (weightPts.length - 1)) * W;
+            const py = (v) => H - ((v - minV) / (maxV - minV)) * H;
+            const pathD = weightPts.map((p, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(p.weight).toFixed(1)}`).join(' ');
+            const areaD = `${pathD} L${W},${H} L0,${H} Z`;
+            return (
+              <svg width="100%" viewBox={`0 0 ${W} ${H + 2}`} style={{ overflow: 'visible', display: 'block' }}>
+                <defs>
+                  <linearGradient id="hwg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.25} />
+                    <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <path d={areaD} fill="url(#hwg)" />
+                <path d={pathD} fill="none" stroke="var(--accent)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                {weightPts.map((p, i) => (
+                  <circle key={i} cx={px(i)} cy={py(p.weight)} r={3} fill="var(--accent)" />
+                ))}
+              </svg>
+            );
+          })()}
+
+          {weightPts.length === 1 && (
+            <div style={{ fontSize: 11, color: 'var(--text2)', textAlign: 'center', padding: '6px 0' }}>
+              Log next week to see your trend chart.
+            </div>
+          )}
+        </>
+      ) : (
+        <div style={{ textAlign: 'center', padding: '10px 0' }}>
+          <div style={{ fontSize: 12, color: 'var(--text2)' }}>No measurements yet.</div>
+          <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 3 }}>Tap to log your first weight entry in Track.</div>
+        </div>
+      )}
+    </Card>
+  );
+}
+
 export function HomeTab({ setTab }) {
   useTick();
-  const { log, setLog, settings, streak, getMealsForDay, getWorkouts, todayKey, profile } = useApp();
+  const { log, setLog, settings, streak, getMealsForDay, getWorkouts, todayKey, profile, progress } = useApp();
   const todayName = DAY_NAMES[new Date().getDay()];
   const f = getFastingState(settings);
   const today = log[todayKey] || {};
@@ -165,6 +252,8 @@ export function HomeTab({ setTab }) {
           </div>
         </Card>
       )}
+
+      <WeightCard progress={progress} profile={profile} onLog={() => setTab('track')} />
 
       <Card>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
