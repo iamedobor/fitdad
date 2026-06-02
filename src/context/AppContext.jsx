@@ -65,7 +65,7 @@ export function AppProvider({ children }) {
     return DEFAULT_WORKOUTS.map((w) => {
       const override = customWorkouts[w.id];
       if (!override) return w;
-      return { ...w, exercises: override.exercises ?? w.exercises };
+      return { ...w, day: override.day ?? w.day, exercises: override.exercises ?? w.exercises };
     });
   };
 

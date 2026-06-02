@@ -40,9 +40,12 @@ function ExerciseRow({ ex, onChange, onDelete }) {
   );
 }
 
+const ALL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 export function WorkoutEditor({ workout, onClose }) {
   const { customWorkouts, setCustomWorkouts } = useApp();
   const [exercises, setExercises] = useState(workout.exercises.map((ex) => ({ ...ex })));
+  const [day, setDay] = useState(workout.day);
 
   const updateExercise = (idx, field, value) => {
     setExercises((prev) => prev.map((ex, i) => i === idx ? { ...ex, [field]: value } : ex));
@@ -58,7 +61,7 @@ export function WorkoutEditor({ workout, onClose }) {
 
   const save = () => {
     const valid = exercises.filter((ex) => ex.name.trim());
-    setCustomWorkouts({ ...customWorkouts, [workout.id]: { exercises: valid } });
+    setCustomWorkouts({ ...customWorkouts, [workout.id]: { day, exercises: valid } });
     onClose();
   };
 
@@ -73,10 +76,24 @@ export function WorkoutEditor({ workout, onClose }) {
     <div style={overlayStyle} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div style={sheetStyle}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-          <div style={{ fontSize: 16, fontWeight: 600 }}>Edit {workout.day}</div>
+          <div style={{ fontSize: 16, fontWeight: 600 }}>{workout.type}</div>
           <button onClick={onClose} aria-label="Close" style={closeBtnStyle}><X size={16} /></button>
         </div>
-        <div style={{ fontSize: 12, color: 'var(--text2)', marginBottom: 16 }}>{workout.type}</div>
+
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: 10, color: 'var(--text)', display: 'block', marginBottom: 8, fontWeight: 500 }}>Training day</label>
+          <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
+            {ALL_DAYS.map((d) => (
+              <button
+                key={d}
+                onClick={() => setDay(d)}
+                style={{ padding: '5px 10px', borderRadius: 20, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: day === d ? 'var(--accent)' : 'var(--bg3)', color: day === d ? 'white' : 'var(--text2)', border: `1px solid ${day === d ? 'var(--accent)' : 'var(--border)'}` }}
+              >
+                {d.slice(0, 3)}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {exercises.map((ex, i) => (
           <ExerciseRow key={i} ex={ex} onChange={(field, value) => updateExercise(i, field, value)} onDelete={() => deleteExercise(i)} />
