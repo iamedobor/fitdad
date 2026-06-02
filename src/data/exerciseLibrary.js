@@ -1,0 +1,87 @@
+export const EXERCISE_LIBRARY = {
+  chest: {
+    label: 'Chest',
+    exercises: [
+      { name: 'Bench Press', sets: 4, reps: '8-10', rest: '90s', homeAlt: 'Push-ups 4x15', tip: 'Shoulder blades retracted, lower bar to chest' },
+      { name: 'Incline Dumbbell Press', sets: 3, reps: '12', rest: '60s', homeAlt: 'Elevated Push-ups 3x12', tip: '30-45 degree incline, full range of motion' },
+      { name: 'Push-ups', sets: 3, reps: '15-20', rest: '60s', homeAlt: 'Push-ups', tip: 'Hands slightly wider than shoulders, full chest stretch at bottom' },
+      { name: 'Cable Fly', sets: 3, reps: '12-15', rest: '60s', homeAlt: 'Dumbbell Fly', tip: 'Slight bend in elbows, squeeze hard at the top' },
+      { name: 'Dips', sets: 3, reps: '10-12', rest: '90s', homeAlt: 'Bench Dips', tip: 'Lean forward slightly to target the chest' },
+      { name: 'Dumbbell Pullover', sets: 3, reps: '12', rest: '60s', homeAlt: 'Dumbbell Pullover', tip: 'Keep slight bend in elbows, feel the stretch at the bottom' },
+    ],
+  },
+  back: {
+    label: 'Back',
+    exercises: [
+      { name: 'Deadlift', sets: 4, reps: '6-8', rest: '2min', homeAlt: 'Dumbbell Deadlift 4x10', tip: 'Neutral spine, drive the floor away with your feet' },
+      { name: 'Barbell Row', sets: 4, reps: '8-10', rest: '90s', homeAlt: 'Dumbbell Bent-over Row', tip: 'Hinge 45 degrees, pull bar to lower chest' },
+      { name: 'Lat Pulldown', sets: 3, reps: '10', rest: '90s', homeAlt: 'Resistance Band Pull', tip: 'Lean back slightly, pull to upper chest' },
+      { name: 'Seated Cable Row', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Row', tip: 'Chest up, drive elbows back not arms' },
+      { name: 'Pull-ups', sets: 3, reps: 'Max', rest: '90s', homeAlt: 'Assisted Pull-ups', tip: 'Dead hang start, pull chest to bar' },
+      { name: 'Face Pulls', sets: 3, reps: '15', rest: '60s', homeAlt: 'Band Pull-aparts', tip: 'Pull to eye level, elbows high and wide' },
+      { name: 'Single-arm Dumbbell Row', sets: 3, reps: '10 each', rest: '60s', homeAlt: 'Single-arm Dumbbell Row', tip: 'Brace on bench, pull elbow past your hip' },
+    ],
+  },
+  shoulders: {
+    label: 'Shoulders',
+    exercises: [
+      { name: 'Overhead Press', sets: 3, reps: '10', rest: '90s', homeAlt: 'Pike Push-ups 3x12', tip: 'Brace core, do not arch lower back' },
+      { name: 'Lateral Raises', sets: 3, reps: '15', rest: '60s', homeAlt: 'Band Lateral Raises', tip: 'Light weight, lead with elbows not wrists' },
+      { name: 'Front Raises', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Front Raises', tip: 'Control the negative, do not swing' },
+      { name: 'Arnold Press', sets: 3, reps: '10', rest: '90s', homeAlt: 'Dumbbell Press', tip: 'Rotate palms as you press overhead' },
+      { name: 'Rear Delt Fly', sets: 3, reps: '15', rest: '60s', homeAlt: 'Band Pull-aparts', tip: 'Slight bend in elbows, squeeze shoulder blades together' },
+      { name: 'Upright Row', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Upright Row', tip: 'Elbows lead the movement, stop at chin height' },
+    ],
+  },
+  arms: {
+    label: 'Arms',
+    exercises: [
+      { name: 'Barbell Curl', sets: 3, reps: '10-12', rest: '60s', homeAlt: 'Dumbbell Curls', tip: 'No swinging, full range of motion' },
+      { name: 'Dumbbell Curls', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Curls', tip: 'No swinging, supinate at the top' },
+      { name: 'Hammer Curls', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Hammer Curls', tip: 'Neutral grip, targets brachialis and forearms too' },
+      { name: 'Tricep Pushdown', sets: 3, reps: '12', rest: '60s', homeAlt: 'Tricep Dips 3x12', tip: 'Elbows glued to sides, full extension at bottom' },
+      { name: 'Skull Crushers', sets: 3, reps: '12', rest: '60s', homeAlt: 'Close-grip Push-ups', tip: 'Lower bar to forehead, elbows pointing up' },
+      { name: 'Overhead Tricep Extension', sets: 3, reps: '12', rest: '60s', homeAlt: 'Band Overhead Extension', tip: 'Keep elbows pointing forward, feel the full stretch' },
+      { name: 'Concentration Curl', sets: 3, reps: '12 each', rest: '45s', homeAlt: 'Seated Dumbbell Curl', tip: 'Elbow braced on inner thigh, full squeeze at top' },
+    ],
+  },
+  legs: {
+    label: 'Legs',
+    exercises: [
+      { name: 'Barbell Squat', sets: 4, reps: '8-10', rest: '2min', homeAlt: 'Goblet Squat', tip: 'Chest up, knees tracking over toes' },
+      { name: 'Goblet Squat', sets: 4, reps: '10', rest: '90s', homeAlt: 'Bodyweight Squat', tip: 'Elbows inside knees at bottom, upright torso' },
+      { name: 'Romanian Deadlift', sets: 3, reps: '10', rest: '90s', homeAlt: 'Single-leg RDL', tip: 'Hinge at hips, soft knees, bar close to legs' },
+      { name: 'Leg Press', sets: 3, reps: '12', rest: '90s', homeAlt: 'Step-ups 3x12 each', tip: 'Feet shoulder-width, do not lock knees at the top' },
+      { name: 'Bulgarian Split Squat', sets: 3, reps: '10 each', rest: '90s', homeAlt: 'Reverse Lunge', tip: 'Rear foot elevated, lean slightly forward' },
+      { name: 'Hip Thrust', sets: 4, reps: '12', rest: '90s', homeAlt: 'Glute Bridge 4x15', tip: 'Bar on hip crease, chin tucked, full glute squeeze at top' },
+      { name: 'Walking Lunges', sets: 3, reps: '12 each', rest: '60s', homeAlt: 'Walking Lunges', tip: 'Long stride, back knee nearly touches floor' },
+      { name: 'Leg Curl', sets: 3, reps: '12', rest: '60s', homeAlt: 'Swiss Ball Curl', tip: 'Control the negative phase' },
+      { name: 'Calf Raises', sets: 4, reps: '15', rest: '45s', homeAlt: 'Calf Raises on step', tip: 'Full stretch at bottom, pause and squeeze at top' },
+      { name: 'Box Jump', sets: 3, reps: '8', rest: '60s', homeAlt: 'Broad Jump 3x8', tip: 'Land softly with bent knees, always step down' },
+    ],
+  },
+  core: {
+    label: 'Core',
+    exercises: [
+      { name: 'Plank', sets: 3, reps: '45s hold', rest: '45s', homeAlt: 'Plank', tip: 'Neutral spine, squeeze glutes and abs hard' },
+      { name: 'Hanging Leg Raises', sets: 3, reps: '12', rest: '60s', homeAlt: 'Lying Leg Raises', tip: 'Control the descent, no swinging' },
+      { name: 'Ab Wheel Rollout', sets: 3, reps: '10', rest: '60s', homeAlt: 'Dead Bug 3x10 each', tip: 'Hollow body position, do not let hips drop' },
+      { name: 'Russian Twists', sets: 3, reps: '20 total', rest: '45s', homeAlt: 'Russian Twists', tip: 'Feet off floor for more challenge, twist fully' },
+      { name: 'Dead Bug', sets: 3, reps: '10 each', rest: '45s', homeAlt: 'Dead Bug', tip: 'Lower back pressed into floor throughout' },
+      { name: 'Mountain Climbers', sets: 3, reps: '30s', rest: '30s', homeAlt: 'Mountain Climbers', tip: 'Hips level, drive knees alternately at pace' },
+      { name: 'Cable Crunch', sets: 3, reps: '15', rest: '45s', homeAlt: 'Crunch', tip: 'Crunch from the abs, not the hips' },
+      { name: 'Side Plank', sets: 3, reps: '30s each', rest: '30s', homeAlt: 'Side Plank', tip: 'Hips stacked, do not let them sag' },
+    ],
+  },
+  cardio: {
+    label: 'Cardio',
+    exercises: [
+      { name: 'Treadmill Run', sets: 1, reps: '25min', rest: 'N/A', homeAlt: 'Outdoor Run', tip: 'Conversational pace — you should be able to speak in short sentences' },
+      { name: 'Rowing Machine', sets: 1, reps: '20min', rest: 'N/A', homeAlt: 'Jump Rope', tip: 'Drive with legs first, then lean back, then pull arms' },
+      { name: 'Cycling', sets: 1, reps: '30min', rest: 'N/A', homeAlt: 'Outdoor Cycling', tip: 'Steady state or intervals — both effective for fat loss' },
+      { name: 'Jump Rope', sets: 5, reps: '2min', rest: '60s', homeAlt: 'High Knees', tip: 'Land softly on the balls of your feet' },
+      { name: 'HIIT Sprint Intervals', sets: 8, reps: '30s on / 30s off', rest: 'between sets', homeAlt: 'Hill Sprints', tip: 'All out during work intervals, complete rest between' },
+      { name: 'Stair Climber', sets: 1, reps: '20min', rest: 'N/A', homeAlt: 'Step-ups', tip: 'Do not lean on the handles — let your legs do the work' },
+    ],
+  },
+};

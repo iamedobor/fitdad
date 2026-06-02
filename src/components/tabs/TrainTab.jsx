@@ -102,6 +102,11 @@ export function TrainTab({ onEditWorkout }) {
 
             {isOpen && (
               <div style={{ borderTop: '1px solid var(--border)', padding: '4px 15px 14px' }}>
+                {w.description && (
+                  <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.6, padding: '10px 0 12px', borderBottom: '1px solid var(--border)', marginBottom: 4 }}>
+                    {w.description}
+                  </div>
+                )}
                 {w.exercises.map((ex, i) => (
                   <div key={i} style={{ padding: '9px 0', borderTop: i > 0 ? '1px solid var(--border)' : 'none' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 3 }}>

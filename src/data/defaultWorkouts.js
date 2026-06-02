@@ -3,6 +3,7 @@ export const DEFAULT_WORKOUTS = [
     id: 'mon',
     day: 'Monday',
     type: 'Upper - Push',
+    description: 'Chest, shoulders and triceps. Builds pressing strength and upper body mass. Great for beginners — these are the movements that add width to your frame.',
     accent: '#e63946',
     exercises: [
       { name: 'Bench Press', sets: 4, reps: '8-10', rest: '90s', homeAlt: 'Push-ups 4x15', tip: 'Shoulder blades retracted, lower bar to chest' },
@@ -17,6 +18,7 @@ export const DEFAULT_WORKOUTS = [
     id: 'tue',
     day: 'Tuesday',
     type: 'Lower',
+    description: 'Quads, hamstrings, glutes and calves. Your legs are the biggest muscle group in your body — training them burns the most calories and boosts fat loss fastest.',
     accent: '#22c97a',
     exercises: [
       { name: 'Barbell Squat', sets: 4, reps: '8-10', rest: '2min', homeAlt: 'Goblet Squat', tip: 'Chest up, knees tracking over toes' },
@@ -31,6 +33,7 @@ export const DEFAULT_WORKOUTS = [
     id: 'thu',
     day: 'Thursday',
     type: 'Upper - Pull',
+    description: 'Back and biceps. Pulling movements balance your push days and fix posture. Deadlifts and rows are among the best fat loss exercises — they recruit almost every muscle.',
     accent: '#4da6ff',
     exercises: [
       { name: 'Deadlift', sets: 4, reps: '6-8', rest: '2min', homeAlt: 'Dumbbell Deadlift 4x10', tip: 'Neutral spine, drive the floor away with your feet' },
@@ -45,6 +48,7 @@ export const DEFAULT_WORKOUTS = [
     id: 'fri',
     day: 'Friday',
     type: 'Lower + Core',
+    description: 'Glutes, hamstrings and core. Finishes the week strong. Hip thrusts and split squats target stubborn fat storage areas directly. Core work improves stability for every other lift.',
     accent: '#f5a623',
     exercises: [
       { name: 'Goblet Squat', sets: 4, reps: '10', rest: '90s', homeAlt: 'Goblet Squat with Dumbbell', tip: 'Elbows inside knees at bottom, upright torso' },

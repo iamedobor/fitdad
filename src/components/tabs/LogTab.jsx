@@ -51,6 +51,10 @@ export function LogTab() {
 
       <ProgressBar value={done / 5} color={done === 5 ? 'var(--green)' : 'var(--accent)'} />
 
+      <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 'var(--r2)', padding: '10px 13px', fontSize: 11, color: 'var(--text2)', lineHeight: 1.6 }}>
+        Meals and workout sync automatically from the Home and Train tabs. The fasting window is the one you set manually each day — did you actually stick to it?
+      </div>
+
       {items.map((item) => (
         <div
           key={item.f}
